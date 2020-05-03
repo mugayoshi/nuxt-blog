@@ -40,12 +40,13 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  axios: {
-    baseURL: 'https://nuxt-blog-muga.firebaseio.com'
-  },
   modules: [
+    '@nuxtjs/axios'
 
   ],
+  axios: {
+    baseURL: 'https://hands-on-nuxt-muga.firebaseio.com'
+  },
   /*
   ** Build configuration
   */

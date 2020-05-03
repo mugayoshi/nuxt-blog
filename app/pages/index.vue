@@ -56,6 +56,7 @@ export default {
           console.log('an account is created!')
           this.$router.push('/posts')
         } catch(e){
+          console.log(e)
           this.$notify.error({
             title: 'アカウント作成失敗',
             message: '既に登録されているか，不正なユーザIDです',
@@ -78,6 +79,7 @@ export default {
           console.log('loging success')
           this.$router.push('/posts')
         } catch (e) {
+          console.log(e)
           this.$notify.error({
             title: 'ログイン作成失敗',
             message: '不正なログインユーザIDです',
