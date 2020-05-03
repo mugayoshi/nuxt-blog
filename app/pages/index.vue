@@ -21,12 +21,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+import Cookies from 'universal-cookie'
 
 export default {
   asyncData({ redirect, store }){
-    if (store.getters['users']){
-      redirect('/posts')
+    if (store.getters['user']){
+      redirect('/posts/')
     }
     return {
       isCreateMode: false,
@@ -38,10 +39,12 @@ export default {
   computed: {
     buttonText() {
       return this.isCreateMode ? '新規登録' : 'ログイン'
-    }
+    },
+    ...mapGetters(['user'])
   },
   methods: {
     async handleClickSubmit(){
+      const cookies = new Cookies()
       if (this.isCreateMode) {
         try {
           console.log('trying to sign-up')
@@ -54,6 +57,7 @@ export default {
             duration: 1000
           })
           console.log('an account is created!')
+          cookies.set('user', JSON.stringify(this.user))
           this.$router.push('/posts')
         } catch(e){
           console.log(e)
@@ -77,6 +81,7 @@ export default {
             duration: 1000
           })
           console.log('loging success')
+          cookies.set('user', JSON.stringify(this.user))
           this.$router.push('/posts')
         } catch (e) {
           console.log(e)

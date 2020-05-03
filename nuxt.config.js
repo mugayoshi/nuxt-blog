@@ -2,6 +2,11 @@
 export default {
   mode: 'universal',
   srcDir: 'app',
+  router: {
+    middleware: [
+      'auth-cookie'
+    ]
+  },
   /*
   ** Headers of the page
   */
