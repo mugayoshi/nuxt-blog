@@ -20,7 +20,7 @@ export const actions = {
         const user = await this.$axios.$get(`/users/${id}.json`)
         // TODO: implement backend side
         if (!user.id) throw new Error('Invalid user')
-        commit('serUser', { user })
+        commit('setUser', { user })
     },
     async register({ commit }, { id }){
         const payload = {}
